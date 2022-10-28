@@ -18,183 +18,181 @@
 	</head>
 	
 	
-	<body style="align-items: flex-start; margin-top: 5vh;">
+	<body>
 		
-		<div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
-			
-			<div class="profile">
-				
-				<div id="ui" class="container-fluid">
-					<div id="db-controls" class="container mb-auto mt-sm-0 ">
-						<div class="row">
-							<div class="btn-group p-1 pb-2" role="group">
-								<button class="btn btn-primary" id="clearButton">Reset</button>
-								<button class="btn btn-primary" id="addEmployeeButton">Add</button>
-								<button class="btn btn-primary" id="editEmployeeButton">Edit</button>
-								<button class="btn btn-primary" id="removeEmployeeButton">Delete</button>
-							</div>
+		<div class="container">
+			<div id="ui" class="container-fluid">
+				<div id="db-controls" class="container mb-auto mt-sm-0 ">
+					<div class="row">
+						<div class="btn-group p-1 pb-2" role="group">
+							<button class="btn btn-primary" id="clearButton">Reset</button>
+							<button class="btn btn-primary" id="addEmployeeButton">Add</button>
+							<button class="btn btn-primary" id="editEmployeeButton">Edit</button>
+							<button class="btn btn-primary" id="removeEmployeeButton">Delete</button>
 						</div>
-						
-						<div id="db-search" class="">
-							<form class="d-flex" autocomplete="on">
-								<input class="form-control me-2" type="search" placeholder="Search" id="searchField" aria-label="Search">
-								<button class="btn btn-outline-success" id="searchButton" type="submit">Search</button>
-							</form>
-						</div>
-						
-						<div id="addModal" class="modal">
-							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title">Add</h5>
-										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-									</div>
-									<div class="modal-body">
-										<form id="addForm">
-											<div class="mb-3">
-												<label for="firstName-add" class="form-label">First Name</label>
-												<input type="text" class="form-control" id="firstName-add" name="firstName" placeholder="First Name">
-											</div>
-											<div class="mb-3">
-												<label for="department-add" class="form-label">Department</label>
-												<input type="text" class="form-control" id="department-add" name="department" placeholder="Department">
-											</div>
-											<div class="mb-3">
-												<label for="designation-add" class="form-label">Designation</label>
-												<input type="text" class="form-control" id="designation-add" name="designation" placeholder="Designation">
-											</div>
-											<div class="mb-3">
-												<label for="salary-add" class="form-label">Salary</label>
-												<input type="text" class="form-control" id="salary-add" name="salary" placeholder="Salary">
-											</div>
-											<div class="mb-3">
-												<label for="raiseEligible1-add" for="raiseEligible2-add" class="form-label">Raise Eligible</label>
-												<input type="radio" class="form-control" id="raiseEligible1-add" name="raiseEligible" value="true">
-												<input type="radio" class="form-control" id="raiseEligible2-add" name="raiseEligible" value="false">
-											</div>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" id="btn-add-dismiss">Close</button>
-										<button type="button" class="btn btn-primary" id="btn-add-submit">Add</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<div id="removeModal" class="modal">
-							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title">Remove</h5>
-										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-									</div>
-									<div class="modal-body">
-										<form id="removeForm">
-											<div class="mb-3">
-												<label for="firstName-remove" class="form-label">First Name</label>
-												<input type="text" class="form-control" id="firstName-remove" name="firstName" placeholder="First Name">
-											</div>
-											<div class="mb-3">
-												<label for="department-remove" class="form-label">Department</label>
-												<input type="text" class="form-control" id="department-remove" name="department" placeholder="Department">
-											</div>
-											<div class="mb-3">
-												<label for="designation-remove" class="form-label">Designation</label>
-												<input type="text" class="form-control" id="designation-remove" name="designation" placeholder="Designation">
-											</div>
-											<div class="mb-3">
-												<label for="salary-remove" class="form-label">Salary</label>
-												<input type="text" class="form-control" id="salary-remove" name="salary" placeholder="Salary">
-											</div>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" id="btn-remove-dismiss">Close</button>
-										<button type="button" class="btn btn-primary" id="btn-remove-submit">Remove</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<div id="editModal" class="modal">
-							<div class="modal-dialog modal-dialog-centered" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title">Edit</h5>
-										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-									</div>
-									<div class="modal-body">
-										<form id="editForm">
-											<div class="mb-3">
-												<label for="firstName-edit" class="form-label">First Name</label>
-												<input type="text" class="form-control" id="firstName-edit" name="firstName" placeholder="First Name">
-											</div>
-											<div class="mb-3">
-												<label for="lastName-edit" class="form-label">Last Name</label>
-												<input type="text" class="form-control" id="lastName-edit" name="lastName" placeholder="Last Name">
-											</div>
-											<div class="mb-3">
-												<label for="department-edit" class="form-label">Department</label>
-												<input type="text" class="form-control" id="department-edit" name="department" placeholder="Department">
-											</div>
-											<div class="mb-3">
-												<label for="designation-edit" class="form-label">Designation</label>
-												<input type="text" class="form-control" id="designation-edit" name="designation" placeholder="Designation">
-											</div>
-											<div class="mb-3">
-												<label for="salary-edit" class="form-label">Salary</label>
-												<input type="text" class="form-control" id="salary-edit" name="salary" placeholder="Salary">
-											</div>
-											<div class="mb-3">
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" value="" id="isPermanent-edit">
-													<label class="form-check-label" for="isPermanent-edit">
-														Is Permanent
-													</label>
-												
-												</div>
-											</div>
-										
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" id="btn-edit-dismiss">Close</button>
-										<button type="button" class="btn btn-primary" id="btn-edit-submit">Edit</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					
 					</div>
+					
+					<div id="db-search" class="">
+						<form class="d-flex" autocomplete="on">
+							<input class="form-control me-2" type="search" placeholder="Search" id="searchField" aria-label="Search">
+							<button class="btn btn-outline-success" id="searchButton" type="submit">Search</button>
+						</form>
+					</div>
+					
+					<div id="addModal" class="modal">
+						<div class="modal-dialog modal-dialog-centered" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title">Add</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+									<form id="addForm">
+										<div class="mb-3">
+											<label for="firstName-add" class="form-label">First Name</label>
+											<input type="text" class="form-control" id="firstName-add" name="firstName" placeholder="First Name">
+										</div>
+										<div class="mb-3">
+											<label for="department-add" class="form-label">Department</label>
+											<input type="text" class="form-control" id="department-add" name="department" placeholder="Department">
+										</div>
+										<div class="mb-3">
+											<label for="designation-add" class="form-label">Designation</label>
+											<input type="text" class="form-control" id="designation-add" name="designation" placeholder="Designation">
+										</div>
+										<div class="mb-3">
+											<label for="salary-add" class="form-label">Salary</label>
+											<input type="text" class="form-control" id="salary-add" name="salary" placeholder="Salary">
+										</div>
+										<div class="mb-3">
+											<label for="raiseEligible1-add" for="raiseEligible2-add" class="form-label">Raise Eligible</label>
+											<input type="radio" class="form-control" id="raiseEligible1-add" name="raiseEligible" value="true">
+											<input type="radio" class="form-control" id="raiseEligible2-add" name="raiseEligible" value="false">
+										</div>
+									</form>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" id="btn-add-dismiss">Close</button>
+									<button type="button" class="btn btn-primary" id="btn-add-submit">Add</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div id="removeModal" class="modal">
+						<div class="modal-dialog modal-dialog-centered" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title">Remove</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+									<form id="removeForm">
+										<div class="mb-3">
+											<label for="firstName-remove" class="form-label">First Name</label>
+											<input type="text" class="form-control" id="firstName-remove" name="firstName" placeholder="First Name">
+										</div>
+										<div class="mb-3">
+											<label for="department-remove" class="form-label">Department</label>
+											<input type="text" class="form-control" id="department-remove" name="department" placeholder="Department">
+										</div>
+										<div class="mb-3">
+											<label for="designation-remove" class="form-label">Designation</label>
+											<input type="text" class="form-control" id="designation-remove" name="designation" placeholder="Designation">
+										</div>
+										<div class="mb-3">
+											<label for="salary-remove" class="form-label">Salary</label>
+											<input type="text" class="form-control" id="salary-remove" name="salary" placeholder="Salary">
+										</div>
+									</form>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" id="btn-remove-dismiss">Close</button>
+									<button type="button" class="btn btn-primary" id="btn-remove-submit">Remove</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div id="editModal" class="modal">
+						<div class="modal-dialog modal-dialog-centered" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title">Edit</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+									<form id="editForm">
+										<div class="mb-3">
+											<label for="firstName-edit" class="form-label">First Name</label>
+											<input type="text" class="form-control" id="firstName-edit" name="firstName" placeholder="First Name">
+										</div>
+										<div class="mb-3">
+											<label for="lastName-edit" class="form-label">Last Name</label>
+											<input type="text" class="form-control" id="lastName-edit" name="lastName" placeholder="Last Name">
+										</div>
+										<div class="mb-3">
+											<label for="department-edit" class="form-label">Department</label>
+											<input type="text" class="form-control" id="department-edit" name="department" placeholder="Department">
+										</div>
+										<div class="mb-3">
+											<label for="designation-edit" class="form-label">Designation</label>
+											<input type="text" class="form-control" id="designation-edit" name="designation" placeholder="Designation">
+										</div>
+										<div class="mb-3">
+											<label for="salary-edit" class="form-label">Salary</label>
+											<input type="text" class="form-control" id="salary-edit" name="salary" placeholder="Salary">
+										</div>
+										<div class="mb-3">
+											<div class="form-check">
+												<input class="form-check-input" type="checkbox" value="" id="isPermanent-edit">
+												<label class="form-check-label" for="isPermanent-edit">
+													Is Permanent
+												</label>
+											
+											</div>
+										</div>
+									
+									</form>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" id="btn-edit-dismiss">Close</button>
+									<button type="button" class="btn btn-primary" id="btn-edit-submit">Edit</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				
 				</div>
 			</div>
 			
-			<table id="employeeTable" class="table pt-1">
-				<thead>
-					<tr class="table-success">
-						<th scope="col">First Name</th>
-						<th scope="col">Department</th>
-						<th scope="col">Designation</th>
-						<th scope="col">Salary</th>
-						<th scope="col">Raise Eligible</th>
-					</tr>
-				</thead>
-				<tbody id="employeeTableBody">
-				
-				
-				</tbody>
-				<tfoot>
-					<tr>
-						<td colspan="5">
-							<button id="refreshEmployee" class="btn btn-primary">Refresh</button>
-						</td>
-					</tr>
-				</tfoot>
-			</table>
-		
+			
+			<div class="profile">
+				<table id="employeeTable" class="table">
+					<thead>
+						<tr class="table-success">
+							<th scope="col">First Name</th>
+							<th scope="col">Department</th>
+							<th scope="col">Designation</th>
+							<th scope="col">Salary</th>
+							<th scope="col">Raise Eligible</th>
+						</tr>
+					</thead>
+					<tbody id="employeeTableBody">
+					
+					
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="5">
+								<button id="refreshEmployee" class="btn btn-primary">Refresh</button>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+			
 		</div>
-		
 		<script type="module" src="./main.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	</body>

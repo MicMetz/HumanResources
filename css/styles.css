@@ -22,6 +22,12 @@ h1 {
 
 
 
+.container {
+    width : 100%; display : flex; flex-direction : column; align-items : center;
+}
+
+
+
 .profile {
     width         : 90%;
     max-width     : 700px;
@@ -29,7 +35,9 @@ h1 {
     border-radius : 2px;
     padding       : 10px 14px 10px 10px;
     margin-bottom : 10px;
+    margin-top    : 5vh;
 }
+
 
 
 #employeeTable {
@@ -38,9 +46,11 @@ h1 {
 }
 
 
+
 #db-search input {
 
 }
+
 
 
 #ui {
