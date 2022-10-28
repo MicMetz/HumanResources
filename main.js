@@ -93,6 +93,9 @@ function init() {
     server.buildTable();
 
     var addModal = document.getElementById('addModal');
+    addModal.addEventListener('clickOff', function () {
+        console.log('clicked off');
+    });
     addModal.addEventListener('click', function (buttonClicked) {
         if (buttonClicked.target.id === 'btn-add-submit') {
             console.log('submit action test');
@@ -118,6 +121,20 @@ function init() {
         }
     });
 
+    var editModal = document.getElementById('editModal');
+    editModal.addEventListener('click', function (buttonClicked) {
+        if (buttonClicked.target.id === 'btn-edit-submit') {
+            console.log('submit action test');
+        }
+
+        if (buttonClicked.target.id === 'btn-edit-dismiss') {
+            console.log('dismiss action test');
+            editModal.style.display = 'none';
+            editModal.style.opacity = "0";
+        }
+    });
+
+
     var searchButton = document.getElementById('searchButton');
     var searchBar = document.getElementById('searchField');
     searchButton.addEventListener('click', function () {
@@ -135,17 +152,38 @@ function init() {
 
     var addEmployeeButton = document.getElementById('addEmployeeButton');
     addEmployeeButton.addEventListener('click', function () {
-        addModal.style.display = 'flex';
+        addModal.style.display = 'block';
         addModal.style.opacity = '1';
     });
 
+    var removeEmployeeButton = document.getElementById('removeEmployeeButton');
+    removeEmployeeButton.addEventListener('click', function () {
+        removeModal.style.display = 'block';
+        removeModal.style.opacity = '1';
+    });
 
-    // document.addEventListener('click', function (event) {
-    //     if (event.target !== addModal) {
-    //         addModal.style.display = 'none';
-    //         addModal.style.opacity = '0';
-    //     }
-    // });
+    var editEmployeeButton = document.getElementById('editEmployeeButton');
+    editEmployeeButton.addEventListener('click', function () {
+        editModal.style.display = 'block';
+        editModal.style.opacity = '1';
+    });
 
 
 }
+
+
+$('body').on('click', function (e) {
+    if ($(e.target).closest('#addModal').length !== 0) {
+        $('#addModal').hide();
+    }
+
+    if ($(e.target).closest('#removeModal').length !== 0) {
+        $('#removeModal').hide();
+    }
+
+    if ($(e.target).closest('#editModal').length !== 0) {
+        $('#editModal').hide();
+    }
+});
+
+
