@@ -9,6 +9,7 @@ class ServerSimulation {
         this.data = [];
         this.employees = [];
         this.company = new Company();
+        this.activeBase = 0;
         this.employeesQueried = 0;
         this.companies = [];
 
@@ -29,7 +30,7 @@ class ServerSimulation {
     queryData(query) {
         var result = [];
         for (var i = 0; i < this.data.length; i++) {
-            if (this.data.company[0].employees[i].firstName === query) {
+            if (this.data.company[this.activeBase].employees[i].firstName === query) {
                 result.push(this.data.employees[i]);
             }
         }
@@ -72,14 +73,14 @@ class ServerSimulation {
 
 
     buildcontainers() {
-        this.company.name = this.data.company[0].companyName;
+        this.company.name = this.data.company[this.activeBase].companyName;
         console.log(this.company.name);
-        for (var i = 0; i < this.data.company[0].employees.length; i++) {
-            const employee = new Employee(this.data.company[0].employees[i].firstName,
-                this.data.company[0].employees[i].department,
-                this.data.company[0].employees[i].designation,
-                this.data.company[0].employees[i].salary,
-                this.data.company[0].employees[i].raiseEligible);
+        for (var i = 0; i < this.data.company[this.activeBase].employees.length; i++) {
+            const employee = new Employee(this.data.company[this.activeBase].employees[i].firstName,
+                this.data.company[this.activeBase].employees[i].department,
+                this.data.company[this.activeBase].employees[i].designation,
+                this.data.company[this.activeBase].employees[i].salary,
+                this.data.company[this.activeBase].employees[i].raiseEligible);
             this.employees.push(employee);
             // console.log(employee.firstName);
         }
@@ -98,7 +99,32 @@ class ServerSimulation {
     }
 
 
-    saveData() {
+    async saveData() {
+        var newData = this.data;
+        this.data.company[this.activeBase].employees.forEach((employee) => {
+            if (this.employees.indexOf(employee) === -1) {
+                newData.company[this.activeBase].employees.splice(this.data.company[this.activeBase].employees.indexOf(employee), 1);
+            }
+        });
+        this.employees.forEach((employee) => {
+            if (this.data.company[this.activeBase].employees.indexOf(employee) === -1) {
+                newData.company[this.activeBase].employees.push(employee);
+            }
+        });
+
+        try {
+            const response = await axios.post('./data.json', newData);
+            console.log(response);
+        } catch (error) {
+            console.error(error);
+        }
+
+        // var xhr = new XMLHttpRequest();
+        // xhr.open('POST', this.dataURL, true);
+        // xhr.setRequestHeader("Accept", "application/json");
+        // xhr.setRequestHeader('Content-Type', 'application/json');
+        // xhr.onload = () => console.log(xhr.responseText);
+        // xhr.send(newData);
 
     }
 }
@@ -187,6 +213,8 @@ function init() {
         editModal.style.opacity = '1';
     });
 
+    server.addEmployee(new Employee('test', 'test', 'test', 'test', 'test'));
+    server.saveData().then(r => console.log(r));
 
 }
 
