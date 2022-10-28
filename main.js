@@ -8,6 +8,7 @@ class ServerSimulation {
         this.dataURL = './data.json';
         this.data = [];
         this.employees = [];
+        this.company = new Company();
         this.employeesQueried = 0;
         this.companies = [];
 
@@ -20,7 +21,7 @@ class ServerSimulation {
 
     init() {
         this.loadData(this);
-        console.log(this.data.employees.length);
+        // console.log(this.data);
         this.buildcontainers();
     }
 
@@ -28,7 +29,7 @@ class ServerSimulation {
     queryData(query) {
         var result = [];
         for (var i = 0; i < this.data.length; i++) {
-            if (this.data.employees[i].firstName === query) {
+            if (this.data.company[0].employees[i].firstName === query) {
                 result.push(this.data.employees[i]);
             }
         }
@@ -40,14 +41,16 @@ class ServerSimulation {
         let body = document.getElementById('employeeTableBody');
         this.employees.forEach((employee) => {
             console.log(employee.firstName);
-            body.innerHTML +=
-                `<tr>
-                    <td>${employee.firstName}</td>
-                    <td>${employee.department}</td>
-                    <td>${employee.designation}</td>
-                    <td>${employee.salary}</td>
-                    <td>${employee.raiseEligible}</td>
-                </tr>`;
+            body.innerHTML += `<tr>
+              <theader>${this.company.name}</theader>
+              </tr>;
+            <tr>
+                <td>${employee.firstName}</td>
+                <td>${employee.department}</td>
+                <td>${employee.designation}</td>
+                <td>${employee.salary}</td>
+                <td>${employee.raiseEligible}</td>
+            </tr>`;
         });
     }
 
@@ -69,23 +72,34 @@ class ServerSimulation {
 
 
     buildcontainers() {
-        console.log(this.data.employees.length);
-        for (var i = 0; i < this.data.employees.length; i++) {
-            const employee = new Employee(
-                this.data.employees[i].firstName,
-                this.data.employees[i].department,
-                this.data.employees[i].designation,
-                this.data.employees[i].salary,
-                this.data.employees[i].raiseEligible);
+        this.company.name = this.data.company[0].companyName;
+        console.log(this.company.name);
+        for (var i = 0; i < this.data.company[0].employees.length; i++) {
+            const employee = new Employee(this.data.company[0].employees[i].firstName,
+                this.data.company[0].employees[i].department,
+                this.data.company[0].employees[i].designation,
+                this.data.company[0].employees[i].salary,
+                this.data.company[0].employees[i].raiseEligible);
             this.employees.push(employee);
             // console.log(employee.firstName);
         }
+        this.company.employees = this.employees;
     }
 
 
     resetSearch() {
         this.query = '';
         this.buildTable(this.data);
+    }
+
+
+    addEmployee(value) {
+        this.employees.push(value);
+    }
+
+
+    saveData() {
+
     }
 }
 
