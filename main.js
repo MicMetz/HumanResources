@@ -71,7 +71,12 @@ class ServerSimulation {
     buildcontainers() {
         console.log(this.data.employees.length);
         for (var i = 0; i < this.data.employees.length; i++) {
-            const employee = new Employee(this.data.employees[i].firstName, this.data.employees[i].department, this.data.employees[i].designation, this.data.employees[i].salary, this.data.employees[i].raiseEligible);
+            const employee = new Employee(
+                this.data.employees[i].firstName,
+                this.data.employees[i].department,
+                this.data.employees[i].designation,
+                this.data.employees[i].salary,
+                this.data.employees[i].raiseEligible);
             this.employees.push(employee);
             // console.log(employee.firstName);
         }
